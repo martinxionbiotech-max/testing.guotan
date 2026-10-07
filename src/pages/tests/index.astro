@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { site, url } from '../../data/site-config';
 import { testMethods } from '../../data/tests';
+import { industryReferences, INDUSTRY_REFERENCE_DISCLAIMER } from '../../data/industry-references';
 import { SITES } from '../../lib/sites';
 import { breadcrumbJsonLd, datasetJsonLd } from '../../lib/seo';
 
@@ -74,6 +75,35 @@ const jsonLd = [
 
   <section class="section section-alt">
     <div class="container">
+      <h2>Industry reference points (Chinese-language sources)</h2>
+      <p class="lede">
+        Class-level reference values compiled from public Chinese-language trade
+        listings, process references and standard series (GB/T 12496 family for
+        activated carbon). These provide industry context only.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Reference value</th>
+              <th>Context</th>
+              <th>Source type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {industryReferences.map((r) => (
+              <tr>
+                <td>{r.metric}</td>
+                <td class="spec-value">{r.value}</td>
+                <td>{r.context}</td>
+                <td class="muted">{r.sourceType}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="meta-line">{INDUSTRY_REFERENCE_DISCLAIMER}</p>
       <div class="callout">
         <span class="callout-title">How to use these pages</span>
         <p>
