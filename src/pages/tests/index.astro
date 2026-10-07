@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site, url } from '../../data/site-config';
+import { testMethods } from '../../data/tests';
+import { SITES } from '../../lib/sites';
+import { breadcrumbJsonLd, datasetJsonLd } from '../../lib/seo';
+
+const title = 'Charcoal Test Methods';
+const description =
+  'Seven charcoal test methodologies explained: ash content, moisture, fixed carbon, volatile matter, burning time, size tolerance and emissions — what each measures and how it is generally measured.';
+
+const canonical = url('/tests/');
+
+const jsonLd = [
+  datasetJsonLd({
+    id: `${canonical}#dataset`,
+    name: 'Charcoal test methodology',
+    description,
+    dateModified: '2026-10-07',
+  }),
+  breadcrumbJsonLd([
+    { name: 'Home', url: url('/') },
+    { name: 'Tests', url: canonical },
+  ]),
+];
+---
+
+<BaseLayout
+  site={site}
+  title={title}
+  description={description}
+  canonical={canonical}
+  jsonLd={jsonLd}
+  breadcrumbs={[
+    { name: 'Home', url: '/' },
+    { name: 'Tests', url: '/tests/' },
+  ]}
+>
+  <section class="page-title">
+    <div class="container">
+      <h1>Charcoal test methods</h1>
+      <p class="lede">
+        Seven methodology pages covering the parameters that appear on charcoal
+        quality certificates. Each explains what the parameter measures, why it
+        matters, the typical measurement method under public standards, buyer
+        relevance, limitations and the data source.
+      </p>
+      <p class="meta-line">
+        Methodology only — no fabricated results, no supplier-specific test data.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+        {
+          testMethods.map((t, i) => (
+            <article class="card">
+              <p class="eyebrow" style="color:var(--accent);font-size:0.74rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem">
+                Method {String(i + 1).padStart(2, '0')}
+              </p>
+              <h3><a href={`/tests/${t.slug}/`}>{t.name}</a></h3>
+              <p>{t.summary}</p>
+              <p style="margin-top:0.85rem">
+                <a class="card-link" href={`/tests/${t.slug}/`}>Read the methodology →</a>
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="callout">
+        <span class="callout-title">How to use these pages</span>
+        <p>
+          Read a certificate alongside the matching methodology page. Check which
+          standard and reporting basis the laboratory used, and whether the sample
+          was taken at the point you care about. Where this site has no verified
+          report for a parameter, it says <em>data pending</em> rather than
+          quoting an unverified figure.
+        </p>
+        <p>
+          Parameter definitions and units live on the data sub-site:
+          <a href={`${SITES.data}/`} target="_blank" rel="noopener">data.chinacharcoalhub.com</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

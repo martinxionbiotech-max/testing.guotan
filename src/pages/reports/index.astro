@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site, url } from '../../data/site-config';
+import { SITES } from '../../lib/sites';
+import { breadcrumbJsonLd, datasetJsonLd } from '../../lib/seo';
+import { getCollection } from 'astro:content';
+
+const title = 'Charcoal Test Reports';
+const description =
+  'The Charcoal Hub test reports database: real, attributable charcoal test reports with laboratory, report number, standard and verification status. Currently data pending — no published test reports yet.';
+
+const canonical = url('/reports/');
+
+/* Reports are intentionally empty at launch. The glob guard checks whether any
+   report files exist before querying the collection, so an empty collection does
+   not raise a content-layer error; when real reports are added they surface here. */
+const reportFiles = import.meta.glob('/src/content/reports/**/*.{md,mdx}');
+let reports: { id: string; data: Record<string, unknown> }[] = [];
+if (Object.keys(reportFiles).length > 0) {
+  try {
+    const entries = await getCollection('reports');
+    reports = entries.map((e) => ({ id: e.id, data: e.data as Record<string, unknown> }));
+  } catch {
+    reports = [];
+  }
+}
+
+const fields: { key: string; label: string; note: string }[] = [
+  { key: 'report_id', label: 'Report ID', note: 'Internal Charcoal Hub identifier' },
+  { key: 'product_id', label: 'Product ID', note: 'Links to the product record' },
+  { key: 'manufacturer_id', label: 'Manufacturer ID', note: 'Links to the manufacturer record' },
+  { key: 'test_type', label: 'Test type', note: 'One of the seven methodology parameters' },
+  { key: 'laboratory', label: 'Laboratory', note: 'Named testing laboratory' },
+  { key: 'test_date', label: 'Test date', note: 'ISO date (YYYY-MM-DD)' },
+  { key: 'report_number', label: 'Report number', note: "The laboratory's own report reference" },
+  { key: 'result', label: 'Result', note: 'Measured value' },
+  { key: 'unit', label: 'Unit', note: 'Unit of the result' },
+  { key: 'standard', label: 'Standard', note: 'Test standard applied' },
+  { key: 'document', label: 'Document', note: 'Link to the source document' },
+  { key: 'verification_status', label: 'Verification status', note: 'verified · third_party · supplier · unverified' },
+];
+
+const jsonLd = [
+  datasetJsonLd({
+    id: `${canonical}#dataset`,
+    name: 'Charcoal test reports',
+    description,
+    dateModified: '2026-10-07',
+  }),
+  breadcrumbJsonLd([
+    { name: 'Home', url: url('/') },
+    { name: 'Reports', url: canonical },
+  ]),
+];
+---
+
+<BaseLayout
+  site={site}
+  title={title}
+  description={description}
+  canonical={canonical}
+  jsonLd={jsonLd}
+  breadcrumbs={[
+    { name: 'Home', url: '/' },
+    { name: 'Reports', url: '/reports/' },
+  ]}
+>
+  <section class="page-title">
+    <div class="container">
+      <h1>Test reports</h1>
+      <p class="lede">
+        The Charcoal Hub reports database holds charcoal test reports that can be
+        traced to a named laboratory, a report number, a test date, a standard and
+        a source document — each labelled with a verification status.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      {
+        reports.length === 0 ? (
+          <div class="callout-pending callout">
+            <span class="callout-title">Data pending — no published test reports yet</span>
+            <p>
+              The database is intentionally empty at launch. Reports are added only
+              when a genuine, attributable third-party or factory report exists. We
+              do not publish synthetic sample entries, placeholder results or
+              unattributed figures.
+            </p>
+            <p>
+              Until then, use the <a href="/tests/">test methodology pages</a> to
+              understand what each parameter measures and how to read a report when
+              you receive one.
+            </p>
+          </div>
+        ) : (
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Test type</th>
+                  <th>Laboratory</th>
+                  <th>Test date</th>
+                  <th>Report no.</th>
+                  <th>Result</th>
+                  <th>Unit</th>
+                  <th>Standard</th>
+                  <th>Status</th>
+                  <th>Document</th>
+                </tr>
+              </thead>
+              <tbody>
+                {reports.map((r) => (
+                  <tr>
+                    <td>{String(r.data.test_type)}</td>
+                    <td>{String(r.data.laboratory)}</td>
+                    <td class="spec-value">{String(r.data.test_date)}</td>
+                    <td class="spec-value">{String(r.data.report_number)}</td>
+                    <td class="spec-value">{String(r.data.result)}</td>
+                    <td>{String(r.data.unit)}</td>
+                    <td>{String(r.data.standard)}</td>
+                    <td><span class="badge badge-muted">{String(r.data.verification_status)}</span></td>
+                    <td><a href={String(r.data.document)}>document</a></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>What each report will contain</h2>
+        <p>
+          Every published entry is required to carry the following fields, so a
+          report can be traced and independently checked.
+        </p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            {fields.map((f) => (
+              <tr>
+                <td class="spec-value">{f.key}</td>
+                <td>
+                  <strong>{f.label}</strong> — {f.note}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="callout" style="margin-top:1.5rem">
+        <span class="callout-title">Verification status</span>
+        <p>
+          <span class="badge status-verified">verified</span> reviewed and confirmed ·
+          <span class="badge status-third-party">third_party</span> issued by an independent lab ·
+          <span class="badge status-supplier">supplier</span> supplied by the manufacturer ·
+          <span class="badge status-unverified">unverified</span> not yet checked.
+        </p>
+      </div>
+      <p>
+        Have a report to contribute, or need testing arranged for a specific market?
+        <a href={`${SITES.main}/request-quote/`} target="_blank" rel="noopener">Request a quote</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

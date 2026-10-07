@@ -1,0 +1,3 @@
+Placeholder so the empty reports collection directory is tracked.
+Real report Markdown files (YAML frontmatter only) are added here when genuine,
+attributable test reports exist. See src/content.config.ts for the schema.

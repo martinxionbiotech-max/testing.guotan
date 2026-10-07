@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site, url } from '../../data/site-config';
+import { testMethods } from '../../data/tests';
+import { SITES } from '../../lib/sites';
+import { articleJsonLd, breadcrumbJsonLd } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return testMethods.map((t) => ({
+    params: { slug: t.slug },
+    props: { test: t },
+  }));
+}
+
+const { test } = Astro.props;
+const title = `${test.name} — Charcoal Test Methodology`;
+const description = test.summary;
+const canonical = url(`/tests/${test.slug}/`);
+
+const sections = [
+  { id: 'what-it-measures', title: 'What It Measures', body: test.whatItMeasures },
+  { id: 'why-it-matters', title: 'Why It Matters', body: test.whyItMatters },
+  { id: 'typical-measurement-method', title: 'Typical Measurement Method', body: test.measurementMethod },
+  { id: 'buyer-relevance', title: 'Buyer Relevance', body: test.buyerRelevance },
+  { id: 'limitations', title: 'Limitations', body: test.limitations },
+];
+
+const jsonLd = [
+  articleJsonLd({
+    id: canonical,
+    headline: `${test.name} — charcoal test methodology`,
+    description,
+    datePublished: test.lastUpdated,
+    dateModified: test.lastUpdated,
+  }),
+  breadcrumbJsonLd([
+    { name: 'Home', url: url('/') },
+    { name: 'Tests', url: url('/tests/') },
+    { name: test.name, url: canonical },
+  ]),
+];
+
+const dataSpecUrl = `${SITES.data}${test.dataSpecPath}`;
+---
+
+<BaseLayout
+  site={site}
+  title={title}
+  description={description}
+  canonical={canonical}
+  jsonLd={jsonLd}
+  ogType="article"
+  breadcrumbs={[
+    { name: 'Home', url: '/' },
+    { name: 'Tests', url: '/tests/' },
+    { name: test.name, url: `/tests/${test.slug}/` },
+  ]}
+>
+  <section class="page-title">
+    <div class="container">
+      <h1>{test.name}</h1>
+      <p class="lede">{test.summary}</p>
+      <p class="updated">Last updated {test.lastUpdated}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="callout-pending callout">
+        <span class="callout-title">Methodology only — no results</span>
+        <p>
+          This page describes what <strong>{test.name.toLowerCase()}</strong>
+          measures and how it is generally measured under public standards. It
+          contains <strong>no supplier-specific test results</strong> and no
+          numeric figures presented as our data. Where a real report would sit,
+          this site says <em>data pending</em>.
+        </p>
+      </div>
+
+      <div class="prose">
+        {sections.map((s) => (
+          <section id={s.id}>
+            <h2>{s.title}</h2>
+            {s.body.map((p) => <p>{p}</p>)}
+          </section>
+        ))}
+
+        <section id="data-source">
+          <h2>Data Source</h2>
+          <p>{test.dataSource}.</p>
+          <p class="meta-line">
+            Last updated: <time datetime={test.lastUpdated}>{test.lastUpdated}</time>
+          </p>
+          <h3>Public methods commonly referenced</h3>
+          <ul>
+            {test.standards.map((s) => <li>{s}</li>)}
+          </ul>
+          <p class="meta-line">
+            Standard references are given as general, publicly documented method
+            families. Applicability, current edition and reporting basis must be
+            confirmed with the testing laboratory for any specific report.
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Related</h2>
+      <div class="grid grid-3">
+        <a class="card" href={dataSpecUrl} target="_blank" rel="noopener">
+          <h3>Specification <span class="badge badge-muted">data sub-site</span></h3>
+          <p>Parameter definition, units and specification conventions for this property.</p>
+        </a>
+        <a class="card" href="/reports/">
+          <h3>Test reports <span class="badge badge-warn">data pending</span></h3>
+          <p>Real, attributable reports will be published here with their verification status.</p>
+        </a>
+        <a class="card" href="/tests/">
+          <h3>All test methods</h3>
+          <p>The other six charcoal test methodologies explained from first principles.</p>
+        </a>
+      </div>
+      <p style="margin-top:1.5rem">
+        <a class="btn btn-primary" href={`${SITES.main}/request-quote/`} target="_blank" rel="noopener">
+          Request a quote
+        </a>
+        <a class="btn btn-ghost" href="/tests/">← Back to all test methods</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

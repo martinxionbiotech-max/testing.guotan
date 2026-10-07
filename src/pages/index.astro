@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site, url } from '../data/site-config';
+import { testMethods } from '../data/tests';
+import { SITES, BRAND } from '../lib/sites';
+import {
+  organizationJsonLd,
+  webSiteJsonLd,
+  breadcrumbJsonLd,
+} from '../lib/seo';
+
+const title = 'Charcoal Testing & Quality Intelligence';
+const description =
+  'How charcoal is tested: methodology for ash content, moisture, fixed carbon, volatile matter, burning time, size tolerance and emissions, per public standards. Real test reports are data pending.';
+
+const canonical = url('/');
+
+const jsonLd = [
+  organizationJsonLd({
+    id: SITES.testing,
+    name: `${BRAND} Testing`,
+    description,
+    logo: `${SITES.testing}/logo.svg`,
+  }),
+  webSiteJsonLd({
+    id: `${SITES.testing}/#website`,
+    name: `${BRAND} Testing`,
+    description,
+  }),
+  breadcrumbJsonLd([{ name: 'Home', url: canonical }]),
+];
+---
+
+<BaseLayout
+  site={site}
+  title={title}
+  description={description}
+  canonical={canonical}
+  jsonLd={jsonLd}
+>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Charcoal Hub · Testing</p>
+      <h1>Charcoal testing and quality intelligence</h1>
+      <p class="lede">
+        Plain-language methodology for the parameters that appear on charcoal test
+        certificates — what each one measures, how it is generally measured under
+        public standards, and how to read it as a buyer. This site publishes
+        <strong>methodology only</strong>: real, attributable test reports are
+        <strong>data pending</strong>.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/tests/">Browse the 7 test methods</a>
+        <a class="btn btn-secondary" href="/reports/">Test reports database</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="callout-pending callout">
+        <span class="callout-title">Methodology, not data</span>
+        <p>
+          No fabricated results live here — no invented numbers, laboratories or
+          report references. These pages explain what a test measures and how it
+          is generally measured, so you can read a supplier's real certificate
+          with context. Where a figure would normally appear, this site says
+          <em>data pending</em> until a genuine, attributable report exists.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>What testing covers</h2>
+        <p>
+          Charcoal quality is described by a small set of measurable properties.
+          Four of them form the classic <strong>proximate analysis</strong> —
+          moisture, volatile matter, ash and the fixed carbon calculated from
+          them. Three more describe how a fuel actually performs in use:
+          burning time, size tolerance and combustion emissions.
+        </p>
+        <p>
+          Each methodology page follows the same structure: what it measures, why
+          it matters, the typical measurement method, buyer relevance, limitations,
+          and the data source.
+        </p>
+      </div>
+
+      <div class="grid grid-3">
+        {
+          testMethods.map((t) => (
+            <article class="card">
+              <h3><a href={`/tests/${t.slug}/`}>{t.name}</a></h3>
+              <p>{t.summary}</p>
+              <p style="margin-top:0.85rem">
+                <a class="card-link" href={`/tests/${t.slug}/`}>Read methodology →</a>
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Test reports</h2>
+        <p>
+          Reports are added to the database only when a real, attributable
+          third-party or factory report exists — each with its laboratory, report
+          number, test date, standard, result, unit and document reference, plus a
+          verification status.
+        </p>
+      </div>
+      <div class="callout-pending callout">
+        <span class="callout-title">Data pending — no published test reports yet</span>
+        <p>
+          The reports database is intentionally empty at launch. It will populate
+          as genuine reports are supplied and verified. There are no synthetic
+          sample entries and no placeholder results.
+        </p>
+      </div>
+      <p><a class="btn btn-secondary" href="/reports/">Open the reports database</a></p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Related on Charcoal Hub</h2>
+        <p>
+          Testing is one part of the wider platform. Specifications define the
+          parameters; testing explains how they are measured; manufacturer and
+          product records carry the verified data.
+        </p>
+      </div>
+      <div class="grid grid-3">
+        <a class="card" href={`${SITES.main}/testing/`} target="_blank" rel="noopener">
+          <h3>Testing overview <span class="badge badge-muted">main site</span></h3>
+          <p>How testing fits into the platform and how reports are labelled.</p>
+        </a>
+        <a class="card" href={`${SITES.data}/`} target="_blank" rel="noopener">
+          <h3>Data &amp; specifications <span class="badge badge-muted">sibling</span></h3>
+          <p>Parameter definitions, units and specification conventions.</p>
+        </a>
+        <a class="card" href={`${SITES.manufacturer}/`} target="_blank" rel="noopener">
+          <h3>Manufacturers <span class="badge badge-muted">sibling</span></h3>
+          <p>Supplier and factory profiles, each labelled by verification status.</p>
+        </a>
+      </div>
+      <div class="cta-banner">
+        <h2>Need a specific test or a verified report?</h2>
+        <p>Request a quote and tell us which parameters and standards matter for your market.</p>
+        <a class="btn btn-primary" href={`${SITES.main}/request-quote/`} target="_blank" rel="noopener">
+          Request a quote
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
