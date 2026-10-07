@@ -32,6 +32,7 @@ export const site: SiteConfig = {
     { label: 'Home', href: '/' },
     { label: 'Tests', href: '/tests/' },
     { label: 'Reports', href: '/reports/' },
+    { label: '← Main Site', href: `${SITES.main}/`, external: true },
   ],
   footerCols: [
     {
@@ -39,7 +40,7 @@ export const site: SiteConfig = {
       links: [
         { label: 'Main site', href: `${SITES.main}/`, external: true },
         { label: 'Testing overview', href: `${SITES.main}/testing/`, external: true },
-        { label: 'Request a quote', href: `${SITES.main}/request-quote/`, external: true },
+        { label: 'Request a quote', href: `${SITES.main}/contact/`, external: true },
       ],
     },
     {
