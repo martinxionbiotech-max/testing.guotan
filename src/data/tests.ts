@@ -280,7 +280,187 @@ export const testMethods: TestMethod[] = [
       'Results are strongly dependent on test configuration, so comparability requires matched protocols; measuring only one species (for example CO) does not characterise overall emissions.',
       'Real-world exposure also depends on ventilation and how the fuel is used, which laboratory testing cannot fully reproduce. This page describes methodology only and states no emissions figures.',
     ],
-    dataSpecPath: '/specifications/emissions/',
+    dataSpecPath: '/specifications/',
+    dataSource: METHODOLOGY_DATA_SOURCE,
+    lastUpdated: METHODOLOGY_LAST_UPDATED,
+  },
+
+  /* ------------------------------- 8 ------------------------------ */
+  {
+    slug: 'density',
+    name: 'Density',
+    summary:
+      'What bulk density means for charcoal, why it decides container loading and freight economics, and how it is generally measured under public methods such as ISO 17828 and container-fill procedures.',
+    standards: [
+      'ISO 17828 — Solid biofuels: determination of bulk density',
+      'Container-fill method (mass of a known volume), widely used in trade',
+      'Particle / apparent density methods (different product family from bulk density)',
+    ],
+    whatItMeasures: [
+      'Density describes how much charcoal mass fits in a given volume. Bulk density is the mass of a loosely filled or mechanically settled volume of material, usually expressed in kg/m³. Particle (apparent) density is the mass of an individual piece divided by its envelope volume — the two are different and are not interchangeable.',
+      'For a compressed cube or briquette product, bulk density is the commercially relevant figure because it determines how many tonnes fit a container.',
+    ],
+    whyItMatters: [
+      'Bulk density decides container loading: a denser product packs more tonnes into a 20\u2032 or 40\u2032 container, lowering freight per tonne. Two products with the same per-kg price can differ substantially in landed cost if their bulk densities differ.',
+      'Density also interacts with burn behaviour — denser pieces tend to burn longer — but that relationship is indirect and must not be inferred from a single density figure.',
+    ],
+    measurementMethod: [
+      'Bulk density is measured by filling a container of known volume with the material under defined conditions (loose-fill, tapped, or mechanically settled) and weighing it. Public references include ISO 17828 for solid biofuels, which specifies the fill procedure and the reporting basis.',
+      'Particle or apparent density is measured differently — for example by weighing a piece and dividing by its measured envelope volume, or by displacement methods. Because the two describe different things, the method must always be stated.',
+    ],
+    buyerRelevance: [
+      'Buyers compare bulk density to estimate container utilisation and freight per tonne. Ask for the fill method and whether the figure is loose or settled, because both change the number.',
+      'Because density is also affected by moisture and size distribution, a density figure should be read together with moisture and size grading rather than as a stand-alone value.',
+    ],
+    limitations: [
+      'Density is not a fixed property: it varies with size distribution, moisture, and how the material is filled or settled, so a value is only meaningful with its method and conditions stated.',
+      'Bulk density says nothing directly about energy content — two materials of equal bulk density can have different fixed carbon and calorific value. This page describes methodology only and publishes no density figures.',
+    ],
+    dataSpecPath: '/specifications/',
+    dataSource: METHODOLOGY_DATA_SOURCE,
+    lastUpdated: METHODOLOGY_LAST_UPDATED,
+  },
+
+  /* ------------------------------- 9 ------------------------------ */
+  {
+    slug: 'calorific-value',
+    name: 'Calorific Value',
+    summary:
+      'What gross calorific value means for charcoal, how it is measured by bomb calorimetry under public methods such as ASTM D5865 and ISO 18125, and how it relates to fixed carbon.',
+    standards: [
+      'ASTM D5865 — Gross calorific value of coal and coke',
+      'ISO 18125 — Solid biofuels: determination of calorific value',
+      'Bomb-calorimeter method (oxygen-bomb combustion)',
+    ],
+    whatItMeasures: [
+      'Calorific value is the heat released by complete combustion of a unit mass of fuel, usually expressed in kcal/kg or MJ/kg. Gross calorific value (higher heating value, GCV/HHV) includes the latent heat of the water vapour formed during combustion; net calorific value (lower heating value, NCV/LHV) excludes it.',
+      'For charcoal the calorific value is a direct measure of energy content, unlike fixed carbon, which is a calculated proxy for the carbon-rich fraction.',
+    ],
+    whyItMatters: [
+      'Calorific value is the most direct single measure of how much usable energy a fuel delivers per kilogram. For industrial heating and energy buyers it is a first-order specification.',
+      'It is also a check on fixed carbon: two charcoals can report similar fixed carbon but differ in calorific value because of ash composition and other factors.',
+    ],
+    measurementMethod: [
+      'Calorific value is measured by bomb calorimetry: a weighed sample is combusted in oxygen inside a sealed bomb, and the heat released is measured by the temperature rise of a surrounding water jacket, corrected for the heat of formation of acids and other factors.',
+      'Public references include ASTM D5865 for coal and coke and ISO 18125 for solid biofuels. The reported value (GCV or NCV) and the basis must be stated, because GCV and NCV differ and because moisture affects the as-received figure.',
+    ],
+    buyerRelevance: [
+      'Buyers who pay for energy should specify the calorific value, its type (GCV versus NCV) and its basis, and ask for the method. A calorific value without these is not comparable across suppliers.',
+      'For charcoal traded for hookah or BBQ, calorific value is usually less decisive than ash, size and burn behaviour, but it remains a useful energy check alongside fixed carbon.',
+    ],
+    limitations: [
+      'Calorific value depends on moisture and ash content: wetter or higher-ash material reports a lower as-received value. GCV and NCV are different quantities and must not be confused.',
+      'A calorific value describes energy content, not how the fuel burns in a particular appliance — burn rate and emissions are separate determinations. This page describes methodology only and publishes no calorific-value figures.',
+    ],
+    dataSpecPath: '/specifications/',
+    dataSource: METHODOLOGY_DATA_SOURCE,
+    lastUpdated: METHODOLOGY_LAST_UPDATED,
+  },
+
+  /* ------------------------------ 10 ------------------------------ */
+  {
+    slug: 'ignition-time',
+    name: 'Ignition Time',
+    summary:
+      'What ignition time means for charcoal, why it has no single universal standard, and how it is generally assessed under defined lighting conditions, including the natural versus quick-light distinction.',
+    standards: [
+      'No single universal standard exists for charcoal ignition time',
+      'Defined lighting protocols (heat source, piece size, endpoint) used in trade',
+      'Volatile-matter proximate methods (ASTM D1762 / ISO 18123) as a related indicator',
+    ],
+    whatItMeasures: [
+      'Ignition time describes how long a charcoal takes to go from cold to a fully lit, usable glow once an ignition source is applied. It has two ends that must be defined: the ignition source and setting at the start, and the endpoint (full uniform glow versus \"usable in session\").',
+      'It distinguishes the two product families: natural charcoal, which needs an external heat source and takes several minutes, and quick-light charcoal, which carries an accelerant layer and ignites in under a minute.',
+    ],
+    whyItMatters: [
+      'Ignition time is a workflow metric: for a hookah lounge it sets how long staff wait before serving; for a home user it shapes the lighting routine.',
+      'The natural versus quick-light distinction is a product decision, not just a convenience detail, because the accelerant layer is a known source of taste and emission complaints.',
+    ],
+    measurementMethod: [
+      'There is no single universal standard. In practice a defined piece size or mass is placed on a defined heat source — commonly an electric coil burner at a stated power — and the time is recorded from start to a defined endpoint (full glow or first usable state).',
+      'The setup must specify piece size, number of pieces, heat source and setting, ambient conditions and the endpoint, because all of them move the result. Natural and quick-light products are effectively tested to different mechanisms and are not directly comparable.',
+    ],
+    buyerRelevance: [
+      'Buyers should state the heat source and endpoint when comparing products and reproduce the test on their own burner. Ignition also depends on size and moisture, so it is read alongside size tolerance and moisture.',
+      'Because natural and quick-light products trade ignition speed against taste and emissions, they should not be compared on ignition time alone.',
+    ],
+    limitations: [
+      'Ignition time is strongly system-dependent — heat-source power, piece size, moisture, ambient temperature and airflow all change it — and the endpoint is often defined loosely, so a figure without its setup is not comparable.',
+      'It is a ranked, workflow indicator rather than an exact prediction. This page describes methodology only and publishes no ignition-time figures.',
+    ],
+    dataSpecPath: '/specifications/ignition-time/',
+    dataSource: METHODOLOGY_DATA_SOURCE,
+    lastUpdated: METHODOLOGY_LAST_UPDATED,
+  },
+
+  /* ------------------------------ 11 ------------------------------ */
+  {
+    slug: 'breakage',
+    name: 'Breakage',
+    summary:
+      'What breakage and mechanical durability mean for charcoal, why fines matter in transit and on arrival, and how they are generally assessed under tumbling and drop-test methods such as ISO 17831-1 and ASTM D440.',
+    standards: [
+      'ISO 17831-1 — Solid biofuels: determination of mechanical durability of pellets and briquettes',
+      'ASTM D440 — Drop shatter test for coal',
+      'Sieve-based fines determination (fraction below a stated size)',
+    ],
+    whatItMeasures: [
+      'Breakage — also described as mechanical durability, shatter resistance or fines generation — describes how much of a consignment breaks into smaller pieces or dust under handling and transit. It is expressed either as a durability percentage (mass surviving a defined stress) or as a fines fraction (mass passing a stated sieve).',
+      'For compressed cube or briquette charcoal it captures whether pieces stay intact from factory to bowl; for lump charcoal it captures the production of dust and undersized fragments.',
+    ],
+    whyItMatters: [
+      'Breakage costs money twice: broken pieces and fines are hard to sell at full price, and dust is a complaint and a handling hazard. A product that arrives largely intact protects margin and customer experience.',
+      'Breakage also interacts with size grading — a load that breaks in transit no longer matches the declared size distribution, so breakage and size tolerance are read together.',
+    ],
+    measurementMethod: [
+      'Mechanical durability is assessed by subjecting a known mass of material to a defined stress and measuring what survives. Tumbling methods (such as the ISO 17831-1 durability drum) rotate a sample and then weigh the intact fraction; drop tests (such as the ASTM D440 drop shatter for coal) drop a sample a defined number of times and measure the surviving coarse fraction.',
+      'Fines are determined by sieving a sample and reporting the mass passing a stated sieve size. The method, the stress applied, and the sieve cut must all be stated for a result to be meaningful.',
+    ],
+    buyerRelevance: [
+      'Buyers who ship in bulk or who repack should specify a maximum fines fraction or a minimum durability figure and agree the test method, because breakage is strongly influenced by packaging and handling, not just the product.',
+      'Because breakage develops in transit, a factory durability figure may not describe the load as delivered; an arrival inspection on the landed consignment is the more commercially meaningful check.',
+    ],
+    limitations: [
+      'Breakage is sensitive to the stress conditions of the test and to packaging and handling, so results are comparable only under matched methods. A durability drum and a drop test measure different things and produce different numbers.',
+      'No single durability figure predicts arrival condition across all logistics routes. This page describes methodology only and publishes no breakage figures.',
+    ],
+    dataSpecPath: '/specifications/',
+    dataSource: METHODOLOGY_DATA_SOURCE,
+    lastUpdated: METHODOLOGY_LAST_UPDATED,
+  },
+
+  /* ------------------------------ 12 ------------------------------ */
+  {
+    slug: 'odor',
+    name: 'Odor',
+    summary:
+      'What odor means for charcoal quality, how feedstock purity and carbonisation drive it, why it is a sensory rather than a laboratory metric, and how it relates to volatile matter.',
+    standards: [
+      'No single universal laboratory standard exists for charcoal odor (sensory property)',
+      'Volatile-matter proximate methods (ASTM D1762 / ISO 18123) as a related laboratory indicator',
+      'Controlled burn / panel assessment used in trade',
+    ],
+    whatItMeasures: [
+      'Odor describes what a charcoal releases to the senses during lighting and early combustion — a combination of tars, hydrocarbons and other volatiles driven off as the fuel heats. For hookah use the practical question is whether the charcoal adds any taste or smell of its own, or burns cleanly and neutrally.',
+      'Odor is a sensory property, not a chemical fraction: it is assessed by burning, not by a single laboratory number.',
+    ],
+    whyItMatters: [
+      'For hookah charcoal, odor is one of the experience metrics that decides acceptance, because a clean session is the product. A charcoal that smells chemical, smoky or off during lighting transfers that impression into the perception of the session.',
+      'Unlike ash or moisture, odor is not something a datasheet can directly report, which is why it is tested on a sample in the setup the buyer actually uses.',
+    ],
+    measurementMethod: [
+      'There is no single universal laboratory standard for charcoal odor. In practice it is assessed by controlled burn testing: a defined quantity is lit on a defined heat source and evaluated by a panel during lighting and the first minutes of combustion, sometimes using descriptive sensory scales.',
+      'The nearest laboratory proxy is volatile matter (ASTM D1762-style proximate analysis or ISO 18123), which correlates with start-up smoke and odor but is not the same thing as what a user smells.',
+    ],
+    buyerRelevance: [
+      'Odor is best treated as a sample-test decision, not a specification line. A buyer should assess it blind in their own bowl and burner, and ask the supplier the two questions that predict it: whether the feedstock is single-source coconut shell or blended, and how completely the material was carbonised.',
+      'A low volatile-matter figure on the same batch is a supporting indicator, but the deciding evidence is a blind session test.',
+    ],
+    limitations: [
+      'Odor is subjective and system-dependent: the same charcoal can read differently on different burners and bowls, and panel assessments vary. Volatile matter is a fraction, not a smell, and does not capture the behaviour of binders or additives.',
+      'No single number substitutes for a sample burned in the setup the buyer actually uses, so reported odor quality should always be re-verified on a sample. This page describes methodology only and publishes no odor results.',
+    ],
+    dataSpecPath: '/specifications/odor/',
     dataSource: METHODOLOGY_DATA_SOURCE,
     lastUpdated: METHODOLOGY_LAST_UPDATED,
   },

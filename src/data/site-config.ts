@@ -27,7 +27,7 @@ export const site: SiteConfig = {
   name: 'Charcoal Hub Testing',
   shortName: 'Testing',
   description:
-    'Charcoal testing and quality intelligence for B2B buyers: methodology for ash content, moisture, fixed carbon, volatile matter, burning time, size tolerance and emissions, plus a reports database that stays data-pending until real, attributable test reports exist.',
+    'Charcoal testing and quality intelligence for B2B buyers: methodology for ash content, moisture, fixed carbon, volatile matter, burning time, size tolerance, emissions, density, calorific value, ignition time, breakage and odor, plus a reports database that stays data-pending until real, attributable test reports exist.',
   nav: [
     { label: 'Home', href: '/' },
     { label: 'Tests', href: '/tests/' },
