@@ -57,6 +57,8 @@ export const site: SiteConfig = {
         { label: 'Data & specifications', href: `${SITES.data}/`, external: true },
         { label: 'Manufacturers', href: `${SITES.manufacturer}/`, external: true },
         { label: 'Knowledge base', href: `${SITES.knowledge}/`, external: true },
+        { label: 'Privacy & Data Policy', href: '/privacy/' },
+
       ],
     },
   ],
