@@ -40,18 +40,25 @@ const jsonLd = [
 >
   <section class="hero">
     <div class="container">
-      <p class="eyebrow">Charcoal Hub · Testing</p>
-      <h1>Charcoal testing and quality intelligence</h1>
-      <p class="lede">
-        Plain-language methodology for the parameters that appear on charcoal test
-        certificates — what each one measures, how it is generally measured under
-        public standards, and how to read it as a buyer. This site publishes
-        <strong>methodology only</strong>: real, attributable test reports are
-        <strong>data pending</strong>.
-      </p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="/tests/">Browse the 7 test methods</a>
-        <a class="btn btn-secondary" href="/reports/">Test reports database</a>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Charcoal Hub · Testing</p>
+          <h1>Charcoal testing and quality intelligence</h1>
+          <p class="lede">
+            Plain-language methodology for the parameters that appear on charcoal test
+            certificates — what each one measures, how it is generally measured under
+            public standards, and how to read it as a buyer. This site publishes
+            <strong>methodology only</strong>: real, attributable test reports are
+            <strong>data pending</strong>.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="/tests/">Browse the 7 test methods</a>
+            <a class="btn btn-secondary" href="/reports/">Test reports database</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="/images/hero-lab-testing.webp" alt="Laboratory bench with precision balance, test sieves and charcoal samples — conceptual illustration" width="1600" height="900" loading="eager" />
+        </div>
       </div>
     </div>
   </section>
@@ -74,6 +81,7 @@ const jsonLd = [
   <section class="section section-alt">
     <div class="container">
       <div class="section-head">
+        <p class="section-kicker">01 · Coverage</p>
         <h2>What testing covers</h2>
         <p>
           Charcoal quality is described by a small set of measurable properties.
@@ -89,7 +97,7 @@ const jsonLd = [
         </p>
       </div>
 
-      <div class="grid grid-3">
+      <div class="grid grid-3 card-indexed">
         {
           testMethods.map((t) => (
             <article class="card">
@@ -108,6 +116,7 @@ const jsonLd = [
   <section class="section">
     <div class="container">
       <div class="section-head">
+        <p class="section-kicker">02 · Evidence</p>
         <h2>Test reports</h2>
         <p>
           Reports are added to the database only when a real, attributable
@@ -131,6 +140,7 @@ const jsonLd = [
   <section class="section section-alt">
     <div class="container">
       <div class="section-head">
+        <p class="section-kicker">03 · Network</p>
         <h2>Related on Charcoal Hub</h2>
         <p>
           Testing is one part of the wider platform. Specifications define the
@@ -138,7 +148,7 @@ const jsonLd = [
           product records carry the verified data.
         </p>
       </div>
-      <div class="grid grid-3">
+      <div class="grid grid-3 card-indexed">
         <a class="card" href={`${SITES.main}/testing/`} target="_blank" rel="noopener">
           <h3>Testing overview <span class="badge badge-muted">main site</span></h3>
           <p>How testing fits into the platform and how reports are labelled.</p>
