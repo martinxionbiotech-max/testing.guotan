@@ -58,7 +58,7 @@ const jsonLd = [
         {
           testMethods.map((t, i) => (
             <article class="card">
-              <p class="eyebrow" style="color:var(--accent);font-size:0.74rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem">
+              <p class="eyebrow">
                 Method {String(i + 1).padStart(2, '0')}
               </p>
               <h3><a href={`/tests/${t.slug}/`}>{t.name}</a></h3>
