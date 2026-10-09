@@ -1,14 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { site, url } from '../../data/site-config';
-import { testMethods } from '../../data/tests';
+import { testMethods, TOTAL_METHODS, CORE_METRIC_COUNT } from '../../data/tests';
 import { industryReferences, INDUSTRY_REFERENCE_DISCLAIMER } from '../../data/industry-references';
 import { SITES } from '../../lib/sites';
 import { breadcrumbJsonLd, datasetJsonLd } from '../../lib/seo';
 
 const title = 'Charcoal Test Methods';
 const description =
-  'Twelve charcoal test methodologies explained: ash content, moisture, fixed carbon, volatile matter, burning time, size tolerance, emissions, density, calorific value, ignition time, breakage and odor — what each measures and how it is generally measured.';
+  `${TOTAL_METHODS} charcoal test methodologies explained — ${CORE_METRIC_COUNT} core datasheet metrics (ash content, moisture, fixed carbon, volatile matter, burning time, size tolerance) plus emissions, density, calorific value, ignition time, breakage and odor — what each measures and how it is generally measured.`;
 
 const canonical = url('/tests/');
 
@@ -41,8 +41,9 @@ const jsonLd = [
     <div class="container">
       <h1>Charcoal test methods</h1>
       <p class="lede">
-        Twelve methodology pages covering the parameters that appear on charcoal
-        quality certificates. Each explains what the parameter measures, why it
+        {TOTAL_METHODS} methodology pages covering the parameters that appear on charcoal
+        quality certificates — the {CORE_METRIC_COUNT} core datasheet metrics plus
+        performance indicators. Each explains what the parameter measures, why it
         matters, the typical measurement method under public standards, buyer
         relevance, limitations and the data source.
       </p>

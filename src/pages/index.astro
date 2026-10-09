@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site, url } from '../data/site-config';
-import { testMethods } from '../data/tests';
+import { testMethods, TOTAL_METHODS, CORE_METRIC_COUNT } from '../data/tests';
 import { SITES, BRAND } from '../lib/sites';
 import {
   organizationJsonLd,
@@ -52,7 +52,7 @@ const jsonLd = [
             <strong>data pending</strong>.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="/tests/">Browse the 12 test methods</a>
+            <a class="btn btn-primary" href="/tests/">Browse the {TOTAL_METHODS} test methods</a>
             <a class="btn btn-secondary" href="/reports/">Test reports database</a>
           </div>
         </div>

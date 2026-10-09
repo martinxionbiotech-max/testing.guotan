@@ -468,3 +468,25 @@ export const testMethods: TestMethod[] = [
 
 export const getTestMethod = (slug: string): TestMethod | undefined =>
   testMethods.find((t) => t.slug === slug);
+
+/* ------------------------------------------------------------------ */
+/* Unique method registry — one slug per methodology page.            */
+/* Count methodology pages from this set, never by grepping lines in  */
+/* this file (the type definition lines are not methods).             */
+/* ------------------------------------------------------------------ */
+export const METHOD_SLUGS: string[] = testMethods.map((t) => t.slug);
+
+/** Total number of published methodology pages. */
+export const TOTAL_METHODS = METHOD_SLUGS.length;
+
+/** The six core datasheet metrics buyers see on product records. */
+export const CORE_METRIC_SLUGS = [
+  'ash-content',
+  'moisture',
+  'fixed-carbon',
+  'volatile-matter',
+  'burning-time',
+  'size-tolerance',
+] as const;
+
+export const CORE_METRIC_COUNT = CORE_METRIC_SLUGS.length;
