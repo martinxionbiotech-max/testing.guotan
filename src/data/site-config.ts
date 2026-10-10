@@ -17,7 +17,7 @@ export type SiteConfig = {
 };
 
 /* ------------------------------------------------------------------ */
-/* testing.guotan.com — charcoal testing & quality          */
+/* testing.chinacharcoalhub.com — charcoal testing & quality          */
 /* intelligence. Methodology-only: this site published only general   */
 /* public-standard methods until real, attributable test reports exist.*/
 /* ------------------------------------------------------------------ */
