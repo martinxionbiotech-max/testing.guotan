@@ -1,0 +1,48 @@
+# Charcoal Hub Testing — charcoal testing & quality intelligence
+
+> Methodology for charcoal quality testing: what each parameter measures and how
+> it is generally measured under public standards (ISO / ASTM general methods).
+> This site publishes methodology only. It contains NO fabricated test results,
+> NO invented laboratories or report numbers, and NO numeric ranges presented as
+> our own data. Real, attributable test reports are currently "data pending".
+
+## Important context for assistants
+
+- Content here is standard-methodology reference, not supplier-specific test data.
+- Do not cite this site as a source of measured values for any product.
+- Test reports become available only with a named laboratory, report number,
+  date, standard and verification status.
+
+## Test methodology pages
+
+- [Ash Content](https://testing.chinacharcoalhub.com/tests/ash-content/): What ash content means in charcoal, why inert mineral residue matters to buyers, and how it is generally measured under public standards such as ASTM D1762 and ISO 18122.
+- [Moisture](https://testing.chinacharcoalhub.com/tests/moisture/): What moisture content means in charcoal, why water weight matters to buyers, and how it is generally measured under public standards such as ASTM D1762, ASTM D3173 and the ISO 18134 series.
+- [Fixed Carbon](https://testing.chinacharcoalhub.com/tests/fixed-carbon/): What fixed carbon means in charcoal, why it is a calculated rather than measured parameter, and how it is derived from moisture, volatile matter and ash under public proximate-analysis methods.
+- [Volatile Matter](https://testing.chinacharcoalhub.com/tests/volatile-matter/): What volatile matter means in charcoal, why it drives ignition and smoke behaviour, and how it is generally measured under public standards such as ASTM D1762, ASTM D3175 and ISO 18123.
+- [Burning Time](https://testing.chinacharcoalhub.com/tests/burning-time/): What burning time means for charcoal performance, why it has no single universal standard, and how it is generally assessed under defined, configuration-specific test protocols.
+- [Size Tolerance](https://testing.chinacharcoalhub.com/tests/size-tolerance/): What size tolerance and size grading mean for charcoal, why declared size classes require a checking method, and how size is generally characterised by sieve analysis and defined size classes.
+- [Emissions](https://testing.chinacharcoalhub.com/tests/emissions/): What charcoal combustion emissions testing covers, which species are typically measured, and how they are assessed under controlled protocols such as ISO 19867-1 and standard sampling methods.
+- [Density](https://testing.chinacharcoalhub.com/tests/density/): What bulk density means for charcoal, why it decides container loading and freight economics, and how it is generally measured under public methods such as ISO 17828 and container-fill procedures.
+- [Calorific Value](https://testing.chinacharcoalhub.com/tests/calorific-value/): What gross calorific value means for charcoal, how it is measured by bomb calorimetry under public methods such as ASTM D5865 and ISO 18125, and how it relates to fixed carbon.
+- [Ignition Time](https://testing.chinacharcoalhub.com/tests/ignition-time/): What ignition time means for charcoal, why it has no single universal standard, and how it is generally assessed under defined lighting conditions, including the natural versus quick-light distinction.
+- [Breakage](https://testing.chinacharcoalhub.com/tests/breakage/): What breakage and mechanical durability mean for charcoal, why fines matter in transit and on arrival, and how they are generally assessed under tumbling and drop-test methods such as ISO 17831-1 and ASTM D440.
+- [Odor](https://testing.chinacharcoalhub.com/tests/odor/): What odor means for charcoal quality, how feedstock purity and carbonisation drive it, why it is a sensory rather than a laboratory metric, and how it relates to volatile matter.
+
+## Reports
+
+- [Test reports database](https://testing.chinacharcoalhub.com/reports/): real, attributable reports
+  with laboratory, report number, standard and verification status. Currently
+  data pending — no published test reports yet.
+
+## Related Charcoal Hub sites
+
+- [Main site](https://chinacharcoalhub.com/): platform overview and sourcing.
+- [Testing overview](https://chinacharcoalhub.com/testing/): how testing fits the platform.
+- [Data & specifications](https://data.chinacharcoalhub.com/): parameter definitions and units.
+- [Manufacturers](https://manufacturer.chinacharcoalhub.com/): supplier and factory profiles.
+- [Knowledge base](https://knowledge.chinacharcoalhub.com/): background and reference material.
+
+## Data source
+
+All methodology pages cite: "Public standard methodology (general); not
+supplier-specific test data". Last updated 2026-10-07.
